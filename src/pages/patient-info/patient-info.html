@@ -1,0 +1,94 @@
+<ion-header>
+    <ion-navbar>
+        Patient Information
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="patientInfoForm" (ngSubmit)="save(patientInfoForm)">
+        <ion-list>
+            <!-- First name -->
+            <ion-item>
+                <ion-label floating>First Name
+                    <sup>*</sup>
+                </ion-label>
+                <ion-input type="text" formControlName="firstName" maxlength="25" class="form-control" id="firstName"></ion-input>
+            </ion-item>
+            <div *ngIf="patientInfoForm.controls['firstName'].errors && patientInfoForm.controls['firstName'].touched"
+                class="err-msg custom-error-msg">
+                <div [hidden]="!patientInfoForm.controls['firstName'].errors.required && !patientInfoForm.controls['firstName'].errors.minlength && !patientInfoForm.controls['firstName'].errors.maxlength"
+                    class="err-msg">
+                    First name is required and length should be between 4-25.
+                </div>
+                <div [hidden]="!patientInfoForm.controls['firstName'].errors.pattern" class="err-msg">
+                    First name is not valid.
+                </div>
+            </div>
+            <!-- Last name -->
+            <ion-item>
+                <ion-label floating>Last Name
+                    <sup>*</sup>
+                </ion-label>
+                <ion-input type="text" formControlName="lastName" maxlength="25" class="form-control" id="lastName"></ion-input>
+            </ion-item>
+            <div *ngIf="patientInfoForm.controls['lastName'].errors && patientInfoForm.controls['lastName'].touched"
+                class="err-msg custom-error-msg">
+                <div [hidden]="!patientInfoForm.controls['lastName'].errors.required && !patientInfoForm.controls['lastName'].errors.minlength && !patientInfoForm.controls['lastName'].errors.maxlength"
+                    class="err-msg">
+                    Last name is required and length should be between 4-25.
+                </div>
+                <div [hidden]="!patientInfoForm.controls['lastName'].errors.pattern" class="err-msg">
+                    Last name is not valid.
+                </div>
+            </div>
+            <!-- Email -->
+            <ion-item>
+                <ion-label floating>Email
+                    <sup>*</sup>
+                </ion-label>
+                <ion-input type="email" formControlName="email" maxlength="40" class="form-control" id="email"></ion-input>
+            </ion-item>
+            <div *ngIf="patientInfoForm.controls['email'].errors && patientInfoForm.controls['email'].touched" class="err-msg custom-error-msg">
+                <div [hidden]="!patientInfoForm.controls['email'].errors.required && !patientInfoForm.controls['email'].errors.maxlength"
+                    class="err-msg">
+                    Email is required and maximum length should be 40.
+                </div>
+            </div>
+            <div *ngIf="patientInfoForm.controls['email'].errors && patientInfoForm.controls['email'].touched" class="err-msg custom-error-msg">
+                <div [hidden]="!patientInfoForm.controls['email'].errors.pattern" class="err-msg">
+                    Enter valid email.
+                </div>
+            </div>
+            <!-- Phone no -->
+            <ion-item>
+                <ion-label floating>
+                    Mobile Number
+                    <sup>*</sup>
+                </ion-label>
+                <ion-input type="text" formControlName="mobileNo" maxlength="15" class="form-control" id="mobileNo"
+                    (keypress)="onKeypress($event)"></ion-input>
+            </ion-item>
+            <div *ngIf="patientInfoForm.controls['mobileNo'].errors && patientInfoForm.controls['mobileNo'].touched"
+                class="err-msg custom-error-msg">
+                <div [hidden]="!patientInfoForm.controls['mobileNo'].errors.required && !patientInfoForm.controls['mobileNo'].errors.maxlength && !patientInfoForm.controls['mobileNo'].errors.minlength"
+                    class="err-msg">
+                    Mobile number is required and length should be between 8-15.
+                </div>
+            </div>
+            <div *ngIf="patientInfoForm.controls['mobileNo'].errors && patientInfoForm.controls['mobileNo'].touched"
+                class="err-msg custom-error-msg">
+                <div [hidden]="!patientInfoForm.controls['mobileNo'].errors.pattern" class="err-msg">
+                    Enter Valid mobile number.
+                </div>
+            </div>
+            <ion-item>
+                <ion-label floating>
+                    Address
+                    <sup>*</sup>
+                </ion-label>
+                <ion-textarea formControlName="address" name="address"></ion-textarea>
+            </ion-item>
+        </ion-list>
+        <button ion-button full round color="primary" type="submit" [disabled]="patientInfoForm.invalid">Sign Up</button>
+    </form>
+</ion-content>

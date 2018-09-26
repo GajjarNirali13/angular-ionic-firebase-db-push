@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar>
+        Patient List
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let pList of patientList">
+            <h2>{{ pList.firstName }} {{ pList.lastName}}</h2>
+            <p>{{pList.mobile}}</p>
+            <button item-end (click)="viewDicom()">View Dicom</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

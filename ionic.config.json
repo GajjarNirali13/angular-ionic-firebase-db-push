@@ -1,0 +1,13 @@
+{
+  "name": "dwv",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/",
+      "proxyUrl": "https://localhost:8100/"
+    }
+  ]
+}

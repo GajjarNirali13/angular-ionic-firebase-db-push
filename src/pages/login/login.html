@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            iStoke
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+        <ion-list>
+
+            <ion-item>
+                <ion-label floating>email</ion-label>
+                <ion-input type="email" formControlName="email" class="form-control custom-txt-inp" id="email"></ion-input>
+            </ion-item>
+            <div *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].touched" class="error-msg custom-error-msg">
+                <div [hidden]="!loginForm.controls['email'].errors.required && !loginForm.controls['email'].errors.whitespace"
+                    class="err-msg">
+                    email is required.
+                </div>
+            </div>
+
+
+            <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input type="password" formControlName="passWord" class="form-control custom-txt-inp" id="passWord"></ion-input>
+            </ion-item>
+            <div *ngIf="loginForm.controls['passWord'].errors && loginForm.controls['passWord'].touched" class="error-msg custom-error-msg">
+                <div [hidden]="!loginForm.controls['passWord'].errors.required" class="err-msg">
+                    Password is required.
+                </div>
+            </div>
+
+        </ion-list>
+
+        <button ion-button full type="submit" [disabled]="loginForm.invalid">Submit</button>
+    </form>
+</ion-content>

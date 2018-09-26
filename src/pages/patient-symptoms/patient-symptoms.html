@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar>
+        Patient Symptoms
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="patientSymptomsForm" (ngSubmit)="onFormSubmit()">
+        <ion-card>
+            <img src="../../assets/imgs/facial-dropping.jpeg" />
+            <ion-card-header>
+                Facial Dropping
+            </ion-card-header>
+            <ion-card-content>
+                <input type="radio" value="yes" formControlName="fd"> Yes
+                <input type="radio" value="no" formControlName="fd"> No
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+                Arm weakness
+            </ion-card-header>
+            <ion-card-content>
+                <input type="radio" value="yes" formControlName="aw"> Yes
+                <input type="radio" value="no" formControlName="aw"> No
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+                Speech difficulties
+            </ion-card-header>
+            <ion-card-content>
+                <input type="radio" value="yes" formControlName="sd"> Yes
+                <input type="radio" value="no" formControlName="sd"> No
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+                Time to call emergency services
+            </ion-card-header>
+            <ion-card-content>
+                <input type="radio" value="yes" formControlName="te"> Yes
+                <input type="radio" value="no" formControlName="te"> No
+            </ion-card-content>
+        </ion-card>
+        <button ion-button full type="submit" [disabled]="patientSymptomsForm.invalid">Submit</button>
+    </form>
+</ion-content>
